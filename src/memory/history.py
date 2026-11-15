@@ -9,19 +9,19 @@ class ConversationHistory:
         self.MAX_TAM = max_tam
         self.MAX_CHARS = max_chars
         self._messages: deque[Message] = deque()
-        self.current_characters: int = 0
+        self._current_chars: int = 0
 
     def addMessage(self, txt: Message):
         if txt.char_count > self.MAX_CHARS:
             raise ContextWindowExcedeed
 
         while len(self._messages) >= self.MAX_TAM or (
-            self.current_characters + txt.char_count > self.MAX_CHARS
+            self._current_chars + txt.char_count > self.MAX_CHARS
         ):
             self._evictOldest()
 
         self._messages.append(txt)
-        self.current_characters += txt.char_count
+        self._current_chars += txt.char_count
 
     def _evictOldest(self) -> None:
         removed = self._messages.popleft()

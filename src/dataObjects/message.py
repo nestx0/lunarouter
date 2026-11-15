@@ -39,6 +39,7 @@ class Message:
     role: Role
     content: str = ""
     tool_calls: list[ToolCall] = field(default_factory=list)
+    tool_id: str | None = None
     attachments: list[Attachment] = field(default_factory=list)
 
     @property
