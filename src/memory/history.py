@@ -1,7 +1,7 @@
 from collections import deque
 
-from dataObjects.message import Message, Role
-from exceptions.contextexcedeed import ContextWindowExcedeed
+from src.dataObjects.message import Message, Role
+from src.exceptions.contextexcedeed import ContextWindowExcedeed
 
 
 # Quizas cambiar characters por tokens usados

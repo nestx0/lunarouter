@@ -20,7 +20,9 @@ class ToolCall:
 @dataclass
 class Attachment:
     file_path: str
-    mime_type: str  # jpg, pdf, mp3...
+    type: str
+    data: str  # ver luego como cojones conseguir la data de un archivo para pasarla a la api
+    mime_type: str  # ej. "audio/ogg", "image/jpeg", "application/pdf"
 
 
 @dataclass
@@ -42,6 +44,7 @@ class Message:
     tool_id: str | None = None
     attachments: list[Attachment] = field(default_factory=list)
 
+    # Probablemente cambiar esto por tokens
     @property
     def char_count(self) -> int:
         tools_len = sum(len(tc.name) + len(str(tc.args)) for tc in self.tool_calls)
