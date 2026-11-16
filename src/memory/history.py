@@ -4,6 +4,7 @@ from dataObjects.message import Message, Role
 from exceptions.contextexcedeed import ContextWindowExcedeed
 
 
+# Quizas cambiar characters por tokens usados
 class ConversationHistory:
     def __init__(self, max_tam: int = 3, max_chars: int = 5000) -> None:
         self.MAX_TAM = max_tam

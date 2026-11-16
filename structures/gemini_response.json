@@ -1,0 +1,49 @@
+{
+  "_info": "Esquema real de una respuesta de la Interactions API de Gemini",
+  "id": "v1_Chd3ZkQ1YXRyWkg3dVhrZFVQMDdUM3lBMBIXd2ZENWF0clpIN3VYa2RVUDA3VDN5QTA",
+  "object": "interaction",
+  "model": "gemini-4-hydrogen",
+  "status": "completed",
+  "service_tier": "standard",
+  "created": "2026-11-15T17:49:58Z",
+  "updated": "2026-11-15T17:49:58Z",
+  "usage": {
+    "_info": "Contabilidad de tokens: entrada (46) + pensamiento (649) + salida (76) = 771",
+    "total_tokens": 771,
+    "initial_input_tokens": 46,
+    "total_input_tokens": 46,
+    "total_cached_tokens": 0,
+    "input_tokens_by_modality": [
+      {
+        "modality": "text",
+        "tokens": 46
+      }
+    ],
+    "total_thought_tokens": 649,
+    "total_tool_use_tokens": 0,
+    "total_output_tokens": 76,
+    "output_tokens_by_modality": [
+      {
+        "modality": "text",
+        "tokens": 76
+      }
+    ]
+  },
+  "steps": [
+    {
+      "_info": "Paso 1 (opcional): Bloque de razonamiento interno del modelo",
+      "type": "thought",
+      "signature": "EtkTCtYTAWkUfRPb... [hash cifrado largo omitido]"
+    },
+    {
+      "_info": "Paso 2: Salida final dirigida al usuario",
+      "type": "model_output",
+      "content": [
+        {
+          "type": "text",
+          "text": "¡Muy buenos días tengas, primo! ¿Cómo amanece ese cuerpo? \n\nEspero que te hayas levantado con mucha salud y con alegría, que eso vale más que to' el oro del mundo. Que Dios te bendiga el día y te salga to' de categoría. ¡Dime, compadre, en qué te puedo ayudar hoy!"
+        }
+      ]
+    }
+  ]
+}
