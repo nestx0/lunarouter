@@ -4,6 +4,7 @@ import httpx
 from dotenv import load_dotenv
 
 from src.dataObjects.message import Message, Role, ToolCall
+from src.exceptions.ownexceptions import BadRequestError, TokenLimitReached
 from src.providers.baseprovider import BaseLLMProvider
 
 load_dotenv()
@@ -40,7 +41,7 @@ class GeminiHydrogenProvider(BaseLLMProvider):
             "system_instruction": "Habla como un gitano",  # Modificar mas tarde
             "generation_config": {  # Modificar más tarde
                 "temperature": 0.4,
-                "max_output_tokens": 8024,
+                "max_output_tokens": 1024,
             },
         }
         self.headers = {
@@ -105,10 +106,13 @@ class GeminiHydrogenProvider(BaseLLMProvider):
 
     def _json_to_message(self, data: dict) -> Message:
         status = data.get("status")
-        if status not in ("completed", "requires_action"):
-            raise RuntimeError(
-                f"Respuesta inesperada de Gemini (status={status}): {data}"
+        if status not in ("completed", "requires_action", "incomplete"):
+            raise BadRequestError(
+                f"API call was not done correctly (status={status}): {data}"
             )
+
+        if status == "incomplete":
+            raise TokenLimitReached()
 
         text_parts: list[str] = []
         tool_calls: list[ToolCall] = []
